@@ -61,7 +61,7 @@ var quotes = ['<span class="afBlask"> <span class="abSymbBo abThemeColor""></spa
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Inte ett dugg förvånad"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Varit omtumlade"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Jag blev lite rädd"</span>',
-'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Försökte strypa henne"</span>'
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Försökte strypa henne"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Väldigt mystiska omständigheter"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Aldrig hänt på 30 år"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Osäkert läge"</span>',
