@@ -3,7 +3,7 @@
   "description": "Detta tillägg förbättrar upplevelsen på Aftonbladet genom att deponera underhållande citat och uttryck under huvudrubrikerna.",
   "manifest_version": 2,
   "name": "Skymmningsblaskan Deluxe",
-  "version": "1.1",
+  "version": "1.1.2",
   "icons": {
     "48": "icons/index3.png"
   },
