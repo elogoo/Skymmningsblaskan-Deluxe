@@ -65,15 +65,46 @@ var quotes = ['<span class="afBlask"> <span class="abSymbBo abThemeColor""></spa
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Väldigt mystiska omständigheter"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Aldrig hänt på 30 år"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Osäkert läge"</span>',
-'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Rasistskämten</span>']
-
-
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Rasistskämten</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Jag behövde ta en paus"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Körde ner i avloppshål</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Det är ni som står för kaos"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Fettfläckar och förortsgäng"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Femkant</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Synd om honom"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Tydligt hur skevt det är"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Vi har tagit i lite"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Klart det känns tråkigt"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Kan ge ångest"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Rättar till "historiskt fel"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Skrämmande</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Långt ifrån värdegrunden</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Släpp ut mig för fan!"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Ingen kan stoppa oss"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> <strong><em>"90% upplever bättring"</em></strong></span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Wow!"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Någon har kastat in något"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Lynnig"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Sen kom kallduschen</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Roligt"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Här måste ni verkligen tänka om"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Kraschade: "Största bajsbiten"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Nakenvideo läkte med skönhetsmiss</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Är en myt och förolämpning"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Katastrofalt"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Satt i fängelse</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Gjorde comback mot alla odds</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Han var i färd att avsluta mitt liv"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Läkarna förstår inte"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Det största och viktigaste fyndet på 100 år"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Detta är oförlåtligt</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Våld och hot</span>']
 
 for (let i = 0; i < x.length; i++){
-	x[i].innerHTML += quotes[Math.floor(Math.random() * quotes.length)];
+	var index = Math.floor(Math.random() * quotes.length);
+	x[i].innerHTML += quotes[index];
 }
 
 for(let i = 0; i < z.length; i++){
 	z[i].innerHTML += quotes[Math.floor(Math.random() * quotes.length)];
 }
-
