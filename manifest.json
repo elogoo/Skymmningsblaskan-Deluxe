@@ -13,6 +13,10 @@
     "activeTab"
   ],
   
+  "web_accessible_resources": [
+   "contentscripts/qoutes.txt"
+  ],
+  
   "browser_action": {
     "default_icon": "icons/index3.png",
     "default_popup": "button/button.html"

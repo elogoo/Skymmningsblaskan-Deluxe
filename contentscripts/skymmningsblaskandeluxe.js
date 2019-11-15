@@ -1,6 +1,28 @@
-var x = document.getElementsByClassName("FhCjb");
-var z = document.getElementsByClassName("_1Yzgt");	
-var quotes = ['<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Stefan Holm: ”Fy fan”</span>',
+var centercolumn = document.getElementsByClassName("FhCjb");
+var sidecolumn = document.getElementsByClassName("_1Yzgt");	
+var rawFile = new XMLHttpRequest();
+var path = browser.runtime.getURL("qoutes.txt");
+var splittedText;
+var readText;
+rawFile.open("GET", path, false);
+rawFile.onreadystatechange = function ()
+{
+	if(rawFile.readyState === 4)
+	{
+		if(rawFile.status === 200 || rawFile.status == 0)
+		{
+			readText = rawFile.responseText;
+		}
+	}
+}
+rawFile.send(null);
+splittedText = readText.split("\n");
+var quotes = new Array(splittedText.length);
+for(let i = 0; i < splittedText.length; i++){
+	quotes[i] = '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> ' + splittedText[i] + '</span>';
+}
+
+/*var quotes = ['<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Stefan Holm: ”Fy fan”</span>',
 '<span class="afBlask"> <strong><span class="abThemeTextHighlight _3xAZ3">Varning! Obehagliga bilder</span></strong></span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Tog kläder</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Har blivit som en liten kult"</span>',
@@ -98,13 +120,55 @@ var quotes = ['<span class="afBlask"> <span class="abSymbBo abThemeColor""></spa
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Läkarna förstår inte"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Det största och viktigaste fyndet på 100 år"</span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Detta är oförlåtligt</span>',
-'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Våld och hot</span>']
-
-for (let i = 0; i < x.length; i++){
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Våld och hot</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Förbaskade"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Mycket kraftfullt"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Vi är stora, starka och rätt förbaskade"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Jag ska butcha dig"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Betett sig fel"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Läge att förhandla"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Nu har han exploderat"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Grillade husdjuret"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Jag är jättekär!"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Orkar ju inte"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Ett av vår tids största samhällsproblem"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Får inte normaliseras"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Ska döda dem"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Signalement</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Beklagligt"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Försökte tvinga mig"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Det har brustit i alla led"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Måste bara hugga"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Bullshit!"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Har du mens kan du trycka på fel knapp"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Chefen: "Håll dina åsikter för dig själv"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Kallade oss huliganer"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Lock him up"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Måste brännas för att dö</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Han skämmer ut sig"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> <strong><span class="abThemeTextHighlight _3xAZ3">Nej, helt fel!</span></strong></span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Handlar om förväntningar"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor"><span class="_12sQS">✓</span></span> Två får <svg class="_230Q_" width="4em"><use href="#icon-plus-5" xlink:href="#icon-plus-5"></use><text role="presentation" aria-hidden="true" class="_12sQS">➕➕➕➕➕</text></svg>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "En våt jävla dröm..."</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Det är aldrig bra"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Skriver skit"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Proppskåpet gick"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Det skar sig"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Rep och sele</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Brustit"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Jag blev helt paff"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Var arg"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Sällan jag gör det"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Visste inte att det var straffbart"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Kraftig detonation"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> "Hon har blivit knivskuren"</span>',
+'<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> ”Inte konstigt om folk tycker man är skurk”</span>']
+*/
+for (let i = 0; i < centercolumn.length; i++){
 	var index = Math.floor(Math.random() * quotes.length);
-	x[i].innerHTML += quotes[index];
+	centercolumn[i].innerHTML += quotes[index];
 }
 
-for(let i = 0; i < z.length; i++){
-	z[i].innerHTML += quotes[Math.floor(Math.random() * quotes.length)];
+for(let i = 0; i < sidecolumn.length; i++){
+	sidecolumn[i].innerHTML += quotes[Math.floor(Math.random() * quotes.length)];
 }
