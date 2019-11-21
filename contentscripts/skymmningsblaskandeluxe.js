@@ -1,9 +1,11 @@
 var centercolumn = document.getElementsByClassName("FhCjb");
 var sidecolumn = document.getElementsByClassName("_1Yzgt");	
 var rawFile = new XMLHttpRequest();
-var path = browser.runtime.getURL("qoutes.txt");
+var isFirefox = typeof InstallTrigger !== 'undefined';
+var path = isFirefox ? browser.runtime.getURL("qoutes.txt") : chrome.extension.getURL("qoutes.txt")
 var splittedText;
 var readText;
+
 rawFile.open("GET", path, false);
 rawFile.onreadystatechange = function ()
 {
@@ -15,13 +17,13 @@ rawFile.onreadystatechange = function ()
 		}
 	}
 }
+
 rawFile.send(null);
 splittedText = readText.split("\n");
 var quotes = new Array(splittedText.length);
 for(let i = 0; i < splittedText.length; i++){
 	quotes[i] = '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> ' + splittedText[i] + '</span>';
 }
-
 /*var quotes = ['<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Stefan Holm: ”Fy fan”</span>',
 '<span class="afBlask"> <strong><span class="abThemeTextHighlight _3xAZ3">Varning! Obehagliga bilder</span></strong></span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Tog kläder</span>',

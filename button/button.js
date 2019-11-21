@@ -34,7 +34,7 @@ function activeMessage(message) {
 		play[0].style.display = "none";
 		pause[0].style.display = "block";
 		anotherone[0].style.display = "block";
-		quote[0].style.backgroundColor = "#696969";
+		activeClick.apply(this,quote);
 		changequote = true;
 	}
 	if(messageSplit[1] > 0){
@@ -42,12 +42,9 @@ function activeMessage(message) {
 		pause[0].style.display = "block";
 		anotherone[0].style.display = "block";
 		headline[0].style.display = "block";
+		activeClick.apply(this, headline);
 		changeheadline = true;
 	}
-}
-
-function printMessage(message){
-	console.log(message);
 }
 
 function activeClick(buttons){
@@ -60,32 +57,29 @@ function inactiveClick(buttons){
 
 function skymnifyQuote(){
 	if(isFirefox){
-		var executing = browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"});
-		executing.then(start,reportError);
+		browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);
 	}
 	else{
-		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"});
+		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);;
 	}
 }
-// centercolumn.outerHTML += '<span class="afBlaskheadline"><h3 class="_1Qq8L"> Aftonbladet stänger ner</h3></span>'
+
 function skymnifyHeadline(){
 	if(isFirefox){
-		var executing = browser.tabs.executeScript({file:"/contentscripts/skymnifyheadlines.js"});
-		executing.then(start,reportError);
+	    browser.tabs.executeScript({file:"/contentscripts/skymnifyheadlines.js"}).then(start).catch(reportError);;
 	}
 	else{
-		chrome.tabs.executeScript({file:"/contentscripts/skymnifyheadlines.js"});
+		chrome.tabs.executeScript({file:"/contentscripts/skymnifyheadlines.js"}).then(start).catch(reportError);;
 	}
 	
 }
 
 function removeSkymnify(){
 	if(isFirefox){
-		var executing = browser.tabs.executeScript({file:"/contentscripts/removetext.js"});
-		executing.then(start,reportError);
+		browser.tabs.executeScript({file:"/contentscripts/removetext.js"}).then(start).catch(reportError);;
 	}
 	else {
-		chrome.tabs.executeScript({file:"/contentscripts/removetext.js"});
+		chrome.tabs.executeScript({file:"/contentscripts/removetext.js"}).then(start).catch(reportError);;
 	}
 }
 
@@ -97,12 +91,13 @@ document.addEventListener("click", function(e) {
 	play[0].style.display = "none";
 	pause[0].style.display = "block";
 	anotherone[0].style.display = "block";
-	if(changequote === true){
-		skymnifyQuote();
-	}
 	if(changeheadline === true){
 		skymnifyHeadline();
 	}
+	if(changequote === true){
+		skymnifyQuote();
+	}
+	
 	
   }
   
@@ -142,11 +137,10 @@ document.addEventListener("click", function(e) {
   //Another one
   if (e.target.classList.contains("anotherone")) {
 	if(isFirefox){
-		var executing = browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"});
-		executing.then(start,reportError);
+		browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);;
 	}
 	else{
-		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"});
+		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);;
 	}
   }
 
