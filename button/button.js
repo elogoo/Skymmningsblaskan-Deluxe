@@ -9,6 +9,8 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 var changeheadline = false;
 var changequote = false;
 
+var readText2;
+
 function reportError(error){
 	console.log(`Could not enhance the viewing experience: ${error}`);
 }
@@ -47,6 +49,38 @@ function activeMessage(message) {
 	}
 }
 
+function sendMessageToContent(){
+	readText2 = read();
+	console.log(readText2);
+	try{
+		chrome.tabs.sendMessage(readText2);
+	}
+	catch(err) {
+		console.log(err);
+	}
+	
+}
+
+function read(){
+	var rawFile = new XMLHttpRequest();
+	var path = (typeof InstallTrigger !== 'undefined') ? browser.runtime.getURL("qoutes.txt") : chrome.extension.getURL("qoutes.txt");
+	var splittedText;
+	var readText;
+	rawFile.open("GET", path, false);
+	rawFile.onreadystatechange = function ()
+	{
+		if(rawFile.readyState === 4)
+		{
+			if(rawFile.status === 200 || rawFile.status == 0)
+			{
+				readText = rawFile.responseText;
+			}
+		}
+	}
+	rawFile.send();
+	return readText;
+}
+
 function activeClick(buttons){
 	buttons.style.backgroundColor = "#696969";
 }
@@ -60,7 +94,8 @@ function skymnifyQuote(){
 		browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);
 	}
 	else{
-		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);;
+		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(sendMessageToContent).catch(reportError);;
+		
 	}
 }
 
@@ -82,6 +117,7 @@ function removeSkymnify(){
 		chrome.tabs.executeScript({file:"/contentscripts/removetext.js"}).then(start).catch(reportError);;
 	}
 }
+
 
 document.addEventListener("DOMContentLoaded",isActive);
 

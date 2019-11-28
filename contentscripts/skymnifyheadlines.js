@@ -1,5 +1,5 @@
-var centercolumn = document.getElementsByClassName("_3DuHC");
-var sidecolumn = document.getElementsByClassName("_28XeA");
+var centercolumn = document.querySelectorAll(".XucU-");
+var sidecolumn = document.querySelectorAll("._1rd7K");
 var rawFile = new XMLHttpRequest();
 var path = (typeof InstallTrigger !== 'undefined') ? browser.runtime.getURL("qoutes.txt") : chrome.extension.getURL("qoutes.txt");
 var splittedText;
@@ -54,6 +54,6 @@ for (let i = 0; i < centercolumn.length; i++){
 }
 
 for(let i = 0; i < sidecolumn.length; i++){
-	sidecolumn[i].firstChild.style.display = "none";
-	sidecolumn[i].firstChild.outerHTML += randSideHeadline();
+	sidecolumn[i].parentNode.style.display = "none";
+	sidecolumn[i].parentNode.outerHTML += randSideHeadline();
 }
