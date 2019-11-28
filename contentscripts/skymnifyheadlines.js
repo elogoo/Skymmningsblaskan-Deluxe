@@ -1,7 +1,7 @@
 var centercolumn = document.querySelectorAll(".XucU-");
 var sidecolumn = document.querySelectorAll("._1rd7K");
 var rawFile = new XMLHttpRequest();
-var path = (typeof InstallTrigger !== 'undefined') ? browser.runtime.getURL("qoutes.txt") : chrome.extension.getURL("qoutes.txt");
+var path = (typeof InstallTrigger !== 'undefined') ? browser.runtime.getURL("misc/quotes.txt") : chrome.extension.getURL("misc/quotes.txt");
 var splittedText;
 var readText;
 rawFile.open("GET", path, false);

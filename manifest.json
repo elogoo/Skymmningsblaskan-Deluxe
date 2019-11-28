@@ -4,7 +4,7 @@
   "homepage_url": "https://github.com/elogoo/Skymmningsblaskan-Deluxe",
   "manifest_version": 2,
   "name": "Skymmningsblaskan Deluxe",
-  "version": "1.2",
+  "version": "1.2.1",
   "icons": {
     "48": "icons/index3.png"
   },
@@ -14,7 +14,7 @@
   ],
   
   "web_accessible_resources": [
-   "contentscripts/qoutes.txt"
+   "misc/quotes.txt"
   ],
   
   "browser_action": {

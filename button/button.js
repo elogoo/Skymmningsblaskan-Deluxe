@@ -94,7 +94,7 @@ function skymnifyQuote(){
 		browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);
 	}
 	else{
-		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(sendMessageToContent).catch(reportError);;
+		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);;
 		
 	}
 }
