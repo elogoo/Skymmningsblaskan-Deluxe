@@ -1,5 +1,4 @@
-var x = document.getElementsByClassName("FhCjb");
-var z = document.getElementsByClassName("_1Yzgt");	
+var x = document.getElementsByClassName("_1rd7K");
 var quotes = ['<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Stefan Holm: ”Fy fan”</span>',
 '<span class="afBlask"> <strong><span class="abThemeTextHighlight _3xAZ3">Varning! Obehagliga bilder</span></strong></span>',
 '<span class="afBlask"> <span class="abSymbBo abThemeColor""></span> Tog kläder</span>',
@@ -103,8 +102,4 @@ var quotes = ['<span class="afBlask"> <span class="abSymbBo abThemeColor""></spa
 for (let i = 0; i < x.length; i++){
 	var index = Math.floor(Math.random() * quotes.length);
 	x[i].innerHTML += quotes[index];
-}
-
-for(let i = 0; i < z.length; i++){
-	z[i].innerHTML += quotes[Math.floor(Math.random() * quotes.length)];
 }
