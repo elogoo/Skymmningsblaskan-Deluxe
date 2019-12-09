@@ -12,7 +12,7 @@ var changequote = false;
 var readText2;
 
 function reportError(error){
-	console.log(`Could not enhance the viewing experience: ${error}`);
+	console.error(`JUST NU: Bilbrand i Malmö - ${error.message}`);
 }
 function isActive(){
 	if(isFirefox){
@@ -26,8 +26,8 @@ function isActive(){
 	
 }
 
-function start() {
-	console.log("it works");
+function reportSuccess(result) {
+	console.debug("it works..." + result);
 }
 
 function activeMessage(message) {
@@ -49,37 +49,6 @@ function activeMessage(message) {
 	}
 }
 
-function sendMessageToContent(){
-	readText2 = read();
-	console.log(readText2);
-	try{
-		chrome.tabs.sendMessage(readText2);
-	}
-	catch(err) {
-		console.log(err);
-	}
-	
-}
-
-function read(){
-	var rawFile = new XMLHttpRequest();
-	var path = (typeof InstallTrigger !== 'undefined') ? browser.runtime.getURL("qoutes.txt") : chrome.extension.getURL("qoutes.txt");
-	var splittedText;
-	var readText;
-	rawFile.open("GET", path, false);
-	rawFile.onreadystatechange = function ()
-	{
-		if(rawFile.readyState === 4)
-		{
-			if(rawFile.status === 200 || rawFile.status == 0)
-			{
-				readText = rawFile.responseText;
-			}
-		}
-	}
-	rawFile.send();
-	return readText;
-}
 
 function activeClick(buttons){
 	buttons.style.backgroundColor = "#696969";
@@ -91,30 +60,61 @@ function inactiveClick(buttons){
 
 function skymnifyQuote(){
 	if(isFirefox){
-		browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);
+		var executing = browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"});
+		executing.then(reportSuccess, reportError);
 	}
 	else{
-		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);;
-		
+		 chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}, function(results) {
+                // Check API for any errors thrown, again
+                if (chrome.runtime.lastError) {
+                    // Handle errors from chrome.tabs.executeScript
+					reportError(chrome.runtime.lastError);
+                }
+                else {
+                    reportSuccess(results);
+                }
+            });
 	}
+	
 }
 
 function skymnifyHeadline(){
 	if(isFirefox){
-	    browser.tabs.executeScript({file:"/contentscripts/skymnifyheadlines.js"}).then(start).catch(reportError);;
+		var executing = browser.tabs.executeScript({file: "/contentscripts/skymnifyheadlines.js"});
+		executing.then(reportSuccess, reportError);
 	}
 	else{
-		chrome.tabs.executeScript({file:"/contentscripts/skymnifyheadlines.js"}).then(start).catch(reportError);;
+		chrome.tabs.executeScript({file:"/contentscripts/skymnifyheadlines.js"}, function(results) {
+                // Check API for any errors thrown, again
+                if (chrome.runtime.lastError) {
+                    // Handle errors from chrome.tabs.executeScript
+					reportError(chrome.runtime.lastError);
+                }
+                else {
+                    reportSuccess(results);
+                }
+            });
+		
 	}
 	
 }
 
 function removeSkymnify(){
 	if(isFirefox){
-		browser.tabs.executeScript({file:"/contentscripts/removetext.js"}).then(start).catch(reportError);;
+		var executing = browser.tabs.executeScript({file:"/contentscripts/removetext.js"});
+		executing.then(reportSuccess, reportError);
 	}
 	else {
-		chrome.tabs.executeScript({file:"/contentscripts/removetext.js"}).then(start).catch(reportError);;
+		chrome.tabs.executeScript({file:"/contentscripts/removetext.js"}, function(results) {
+                // Check API for any errors thrown, again
+                if (chrome.runtime.lastError) {
+                    // Handle errors from chrome.tabs.executeScript
+					reportError(chrome.runtime.lastError);
+                }
+                else {
+                    reportSuccess(results);
+                }
+            });
 	}
 }
 
@@ -122,7 +122,8 @@ function removeSkymnify(){
 document.addEventListener("DOMContentLoaded",isActive);
 
 document.addEventListener("click", function(e) {
-	//Add skymmningsblaskan deluxe headlines or quotes
+	let executing;
+//Add skymmningsblaskan deluxe headlines or quotes
   if (e.target.classList.contains("play")) {
 	play[0].style.display = "none";
 	pause[0].style.display = "block";
@@ -173,10 +174,20 @@ document.addEventListener("click", function(e) {
   //Another one
   if (e.target.classList.contains("anotherone")) {
 	if(isFirefox){
-		browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);;
+		executing = browser.tabs.executeScript({file: "/contentscripts/skymmningsblaskandeluxe.js"});
+		executing.then(reportSuccess, reportError);
 	}
 	else{
-		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}).then(start).catch(reportError);;
+		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}, function(results) {
+                // Check API for any errors thrown, again
+                if (chrome.runtime.lastError) {
+                    // Handle errors from chrome.tabs.executeScript
+					reportError(chrome.runtime.lastError);
+                }
+                else {
+                    reportSuccess(results);
+                }
+            });
 	}
   }
 
