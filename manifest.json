@@ -4,7 +4,9 @@
   "homepage_url": "https://github.com/elogoo/Skymmningsblaskan-Deluxe",
   "manifest_version": 2,
   "name": "Skymmningsblaskan Deluxe",
-  "version": "1.2.1",
+  "short_name": "Skymblask Deluxe",
+  "author": "Elogo",
+  "version": "2.0",
   "icons": {
     "48": "icons/index3.png"
   },
