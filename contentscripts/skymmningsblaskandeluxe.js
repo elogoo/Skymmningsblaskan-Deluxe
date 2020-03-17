@@ -5,6 +5,8 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 var path = isFirefox ? browser.runtime.getURL("misc/quotes.txt") : chrome.extension.getURL("misc/quotes.txt")
 var readText = "";
 var splittedText = [];
+//TODO add DOMPurify
+
 //Reads quotes.txt and injects the quotes
 rawFile.open("GET", path);
 rawFile.send();
@@ -41,8 +43,9 @@ function injectQuotes(){
 	}
 	//Injects the quotes to all center column articles
 	for (let i = 0; i < centercolumn.length; i++){
-		var index = Math.floor(Math.random() * quotes.length);
-		centercolumn[i].innerHTML += quotes[index];
+		var quotehtml = () => quotes[Math.floor(Math.random() * quotes.length)];
+		var cleanhtml = DOMPurify.sanitize(quotehtml(), { SAFE_FOR_JQUERY: true });
+		centercolumn[i].innerHTML += cleanhtml;
 	}
 	
 	//Injects the quotes to all side column articles

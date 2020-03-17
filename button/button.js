@@ -71,12 +71,30 @@ function inactiveClick(buttons){
 //Executes the skymmningsblaskandeluxe script
 function skymnifyQuote(){
 	if(isFirefox){
-		//Returns a promise
+		
+		var dompurify = browser.tabs.executeScript({file:"DOMPurify/dist/purify.min.js"});
+		//Calls reportSuccess if the promise resolves and reportError if it rejects
+		dompurify.then(reportSuccess, reportError);
+		
 		var executing = browser.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"});
 		//Calls reportSuccess if the promise resolves and reportError if it rejects
 		executing.then(reportSuccess, reportError);
+		
+		
 	}
 	else{
+		chrome.tabs.executeScript({file:"DOMPurify/dist/purify.min.js"}, function(results) {
+                //Check API for any errors thrown 
+                if (chrome.runtime.lastError) {
+                    //Handle errors from chrome.tabs.executeScript and calls reportError
+					reportError(chrome.runtime.lastError);
+                }
+                else {
+					//If everything works it calls reportSuccess
+                    reportSuccess(results);
+                }
+            });
+		
 		 chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}, function(results) {
                 //Check API for any errors thrown 
                 if (chrome.runtime.lastError) {
@@ -88,16 +106,36 @@ function skymnifyQuote(){
                     reportSuccess(results);
                 }
             });
+			
+			
+			
+		
 	}
 	
 }
 
 function skymnifyHeadline(){
 	if(isFirefox){
+		var dompurify = browser.tabs.executeScript({file:"DOMPurify/dist/purify.min.js"});
+		//Calls reportSuccess if the promise resolves and reportError if it rejects
+		dompurify.then(reportSuccess, reportError);
+		
 		var executing = browser.tabs.executeScript({file: "/contentscripts/skymnifyheadlines.js"});
 		executing.then(reportSuccess, reportError);
 	}
 	else{
+		chrome.tabs.executeScript({file:"DOMPurify/dist/purify.min.js"}, function(results) {
+                //Check API for any errors thrown 
+                if (chrome.runtime.lastError) {
+                    //Handle errors from chrome.tabs.executeScript and calls reportError
+					reportError(chrome.runtime.lastError);
+                }
+                else {
+					//If everything works it calls reportSuccess
+                    reportSuccess(results);
+                }
+            });
+		
 		chrome.tabs.executeScript({file:"/contentscripts/skymnifyheadlines.js"}, function(results) {
                 //Check API for any errors thrown
                 if (chrome.runtime.lastError) {
@@ -191,10 +229,26 @@ document.addEventListener("click", function(e) {
   //Another one or 'En till' button if the user wanted more quotes
   if (e.target.classList.contains("anotherone")) {
 	if(isFirefox){
+		var dompurify = browser.tabs.executeScript({file:"DOMPurify/dist/purify.min.js"});
+		//Calls reportSuccess if the promise resolves and reportError if it rejects
+		dompurify.then(reportSuccess, reportError);
+		
 		executing = browser.tabs.executeScript({file: "/contentscripts/skymmningsblaskandeluxe.js"});
 		executing.then(reportSuccess, reportError);
 	}
 	else{
+		chrome.tabs.executeScript({file:"DOMPurify/dist/purify.min.js"}, function(results) {
+                //Check API for any errors thrown 
+                if (chrome.runtime.lastError) {
+                    //Handle errors from chrome.tabs.executeScript and calls reportError
+					reportError(chrome.runtime.lastError);
+                }
+                else {
+					//If everything works it calls reportSuccess
+                    reportSuccess(results);
+                }
+            });
+		
 		chrome.tabs.executeScript({file:"/contentscripts/skymmningsblaskandeluxe.js"}, function(results) {
                 //Check API for any errors thrown
                 if (chrome.runtime.lastError) {

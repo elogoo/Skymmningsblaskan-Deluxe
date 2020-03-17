@@ -4,12 +4,14 @@ var tipscolumn = document.querySelectorAll("._3a1d2");
 var avslöjcolumn = document.querySelectorAll("._2mFB0");
 var sportcolumn = document.querySelectorAll("._3-mRA");
 var justnucolumn = document.querySelectorAll("._3_9Dr");
+var redaktionensval = document.querySelectorAll("._3SYJM");
 var rawFile = new XMLHttpRequest();
 var isFirefox = typeof InstallTrigger !== 'undefined';
 var path = isFirefox ? browser.runtime.getURL("misc/quotes.txt") : chrome.extension.getURL("misc/quotes.txt");
+//TODO add DOMPurify
 
 //sends a XMLHttpRequest to quotes.txt and passes the text to skymnifyJUSTNU and sideHeadline functions
-function skymnifySideJUSTNU(){
+function specialSkymnify(){
 	rawFile.open("GET", path);
 	rawFile.send();
 	rawFile.onload = function() {
@@ -38,8 +40,8 @@ function skymnifySideJUSTNU(){
 
 
 //Example (part1)Avslöjar: (part2)Leif GW (part3)hyllar (part4)heta (part5)chockmetoden 
-var part1 = ["Avslöjar: ",'<strong><span class="abThemeTextHighlight _3xAZ3">JUST NU:</span></strong>', "TV: ", "Chocken: ", "Rysaren: ", "KAOSET: ", "Läsarfilm: ", "Mardrömmen: ", "Skräcken: ", "Uppgifter inatt: ", "Gör det oerhörda: ", "Beskedet: "];
-var part2 = ["Pernilla Wahlgren ", "Leif GW ", "SD-ledaren ", "Forskaren ", "Let's dance-deltagaren ", "Vår expert ", "Småbarnspappan ", "Trump ", "TV4-profilen ", "Zlatan ", "Hollywood-stjärnan "];
+var part1 = ["Avslöjar: ",'<strong><span class="abThemeTextHighlight _3xAZ3">JUST NU: </span></strong>', "TV: ", "Chocken: ", "Rysaren: ", "KAOSET: ", "Läsarfilm: ", "Mardrömmen: ", "Skräcken: ", "Uppgifter inatt: ", "Gör det oerhörda: ", "Beskedet: ", "Proffsen: ", "Lista: ", "Experten: ", "Dietisten: "];
+var part2 = ["Pernilla Wahlgren ", "Leif GW ", "SD-ledaren ", "Forskaren ", "Let's dance-deltagaren ", "Vår expert ", "Småbarnspappan ", "Trump ", "TV4-profilen ", "Zlatan ", "Hollywood-stjärnan ", "Exet "];
 var part3 = ["hyllar ", "rasar över ", "tipsar om ", "testar ", "tystar ned ", "i lång intervju om ", "skakad av ", "talar ut om ", "varnar för ", "chockas av ", "tårögd efter ", "drabbad av "];
 var part4 = ["heta ", "oväntade ", "ryska ", "otroliga ", "hemliga ", "dramatiska ", "livsfarliga ", "osannolika ", "galna ", "helt sjuka ", "omtalade ", "skrämmande "];
 var part5 = ["chockmetoden", "gifthotet", "jättepenisen", "supervapnet", "viktknepet", "UFO-fyndet", "nakenscenen", "sjukdomen", "snökaoset", "graviditeten", "regeringskrisen", "sexfilmen"];
@@ -112,4 +114,5 @@ skymnifyClass(centercolumn);
 skymnifyClass(tipscolumn);
 skymnifyClass(avslöjcolumn);
 skymnifyClass(sportcolumn);
-skymnifySideJUSTNU();
+skymnifyClass(redaktionensval);
+specialSkymnify();
